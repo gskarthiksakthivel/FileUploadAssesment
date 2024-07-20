@@ -36,6 +36,11 @@ public class ServiceCSV {
         this.repo = repo;
     }
 
+    /**
+     * Method to upload data
+     * @param file
+     * @return
+     */
     public String uploadData(MultipartFile file) {
         List<Exercise> data = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8))) {
@@ -84,7 +89,10 @@ public class ServiceCSV {
         return SUCCESSFULLY_SAVED_THE_DATA;
     }
 
-
+    /**
+     * Method to get all data
+     * @return
+     */
     public List<ExerciseDTO> getAllData() {
         log.debug("Fetching all data");
         return repo.findAll().stream()
@@ -92,7 +100,11 @@ public class ServiceCSV {
                 .collect(Collectors.toList());
     }
 
-
+    /**
+     * Method to get by code
+     * @param code
+     * @return
+     */
     public Exercise getByCode(String code) {
         log.debug("Fetching data for code: {}", code);
         Exercise exercise = repo.findBycode(code);
@@ -104,7 +116,14 @@ public class ServiceCSV {
         return exercise;
     }
 
-
+    /**
+     * Checks if there is any data present in the repository.
+     *
+     * This method counts the number of records in the repository and returns true if
+     * there is at least one record present, otherwise, it returns false.
+     *
+     * @return true if there are records present in the repository, false otherwise
+     */
     public boolean isDataPresent() {
         long count = repo.count();
         log.debug("Data present count: {}", count);
@@ -112,6 +131,10 @@ public class ServiceCSV {
     }
 
 
+    /**
+     * Method to delete All
+     * @return
+     */
     public String deleteAll() {
         log.info("Deleting all records");
         try {

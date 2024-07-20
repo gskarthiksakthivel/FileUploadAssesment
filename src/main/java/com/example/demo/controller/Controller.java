@@ -33,6 +33,11 @@ public class Controller {
         this.service = service;
     }
 
+    /**
+     *
+     * @param file
+     * @return
+     */
     @PostMapping("/upload")
     public ResponseEntity<ResponseMessage> uploadData(@RequestParam("file") @Valid MultipartFile file) {
         log.info("Received a file upload request");

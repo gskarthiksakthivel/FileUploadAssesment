@@ -13,6 +13,7 @@ import java.time.LocalDate;
 
 
 @Entity
+//@Table(name = "exercise")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
