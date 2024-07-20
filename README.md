@@ -48,3 +48,5 @@ ___
 ```ssh
 ### Swagger UI will be run on this url
 `http://localhost:${PORT}/swagger-ui.html`
+
+Due to the relatively low complexity of the project, Domain-Driven Design (DDD) has not been implemented.
