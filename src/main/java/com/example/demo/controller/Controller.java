@@ -92,29 +92,4 @@ public class Controller {
         log.info("All data deleted successfully");
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
     }
-    public static ExerciseDTO convertToDTO(Exercise exercise) {
-        ExerciseDTO dto = new ExerciseDTO();
-        dto.setCode(exercise.getCode());
-        dto.setSource(exercise.getSource());
-        dto.setCodeListCode(exercise.getCodeListCode());
-        dto.setDisplayValue(exercise.getDisplayValue());
-        dto.setLongDescription(exercise.getLongDescription());
-        dto.setFromDate(exercise.getFromDate());
-        dto.setToDate(exercise.getToDate());
-        dto.setSortingPriority(exercise.getSortingPriority());
-        return dto;
-    }
-
-    public static Exercise convertToEntity(ExerciseDTO dto) {
-        Exercise exercise = new Exercise();
-        exercise.setCode(dto.getCode());
-        exercise.setSource(dto.getSource());
-        exercise.setCodeListCode(dto.getCodeListCode());
-        exercise.setDisplayValue(dto.getDisplayValue());
-        exercise.setLongDescription(dto.getLongDescription());
-        exercise.setFromDate(dto.getFromDate());
-        exercise.setToDate(dto.getToDate());
-        exercise.setSortingPriority(dto.getSortingPriority());
-        return exercise;
-    }
 }
