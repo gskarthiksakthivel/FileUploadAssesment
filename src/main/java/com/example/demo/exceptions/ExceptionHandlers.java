@@ -16,6 +16,13 @@ import java.util.List;
 @RestControllerAdvice(basePackages = "com.example.demo")
 public class ExceptionHandlers {
 
+    /**
+     * Handles FileStoreException and returns a detailed API error response.
+     *
+     * @param ex      the thrown FileStoreException
+     * @param request the web request during which the exception was thrown
+     * @return a ResponseEntity containing the ApiError details
+     */
     @ExceptionHandler(FileStoreException.class)
     public ResponseEntity<ApiError> handleCustomException(FileStoreException ex, WebRequest request) {
         log.error("FileStoreException occurred: {}", ex.getLocalizedMessage(), ex);
@@ -33,7 +40,13 @@ public class ExceptionHandlers {
         return new ResponseEntity<>(apiError, HttpStatus.EXPECTATION_FAILED);
     }
 
-
+    /**
+     * Handles MultipartException and returns a detailed API error response.
+     *
+     * @param ex      the thrown MultipartException
+     * @param request the web request during which the exception was thrown
+     * @return a ResponseEntity containing the ApiError details
+     */
     @ExceptionHandler(MultipartException.class)
     public ResponseEntity<ApiError> handleMultipartException(MultipartException ex, WebRequest request) {
         log.error("MultipartException occurred: {}", ex.getLocalizedMessage(), ex);
@@ -51,7 +64,13 @@ public class ExceptionHandlers {
         return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
     }
 
-
+    /**
+     * Handles generic exceptions and returns a detailed API error response.
+     *
+     * @param ex      the thrown Exception
+     * @param request the web request during which the exception was thrown
+     * @return a ResponseEntity containing the ApiError details
+     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiError> handleGenericException(Exception ex, WebRequest request) {
         log.error("Exception occurred: {}", ex.getLocalizedMessage(), ex);
